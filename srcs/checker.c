@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:37:18 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/14 13:01:30 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/14 14:50:45 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	set_stacks(t_stack *a, t_stack *b, int *values, int size)
 
 void	initialise(t_stack *a, t_stack *b, char **init, int stack_size)
 {
-	//stack_size is ac because av includes the ./ so it needs to start from 1.
 	int		i;
 	int		j;
 	int		k;
@@ -28,28 +27,26 @@ void	initialise(t_stack *a, t_stack *b, char **init, int stack_size)
 	char	**arr;
 
 	i = 1;
-	j = 0;
+	j = 1;
 	k = 0;
 	arr[0] = ft_strdup("Begin");
-	j++;
 	values = (int *)malloc(sizeof(int) * stack_size - 1);
 	arr = (char **arr)malloc(sizeof(char **) * stack_size);
 	if (stack_size < 2)
 		error(0);
 	if (stack_size == 2)
 	{
-		//check if just a number or $ARG
-		//if $ARG, do a split of the variable into **arr
-		//if just a number, make **arr just a single value
+		if (!ft_strcmp(av[1], "$ARG"))
+			arr = ft_strsplit($ARG, ' ');
+		else
+			arr[1] = ft_strdup(av[1]);
 	}
 	else
-	{
 		while (av[i])
 		{
 			arr[i] = ft_strdup(av[i]);
 			i++;
 		}
-	}
 	i = 1;
 	while (i < stack_size)
 	{
