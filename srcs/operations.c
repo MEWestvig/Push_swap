@@ -6,15 +6,15 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/24 16:57:15 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/14 10:03:12 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	swap(t_stack *stack)
 {
-	int temp;
+	t_stack	temp;
 
-	temp = stack->stack[0];
+	temp = stack->stack;
 	stack->stack[0] = stack->stack[1];
 	stack->stack[1] = temp;
 }
