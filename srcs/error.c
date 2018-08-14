@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/24 15:41:13 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/14 12:34:41 by mwestvig         ###   ########.fr       */
+/*   Created: 2018/08/14 12:23:59 by mwestvig          #+#    #+#             */
+/*   Updated: 2018/08/14 12:29:30 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../includes/checker.h"
 
-# include "../libft/includes/libft.h"
-
-# define RED "\x1B[31m"
-# define WHITE "\x1B[0m"
-
-typedef struct	s_stack
+void	error(int status)
 {
-	int				value;
-	struct s_stack	*next;
-}				t_stack;
-
-#endif
+	ft_putstr_fd(RED, 2);
+	if (status == 0)
+		ft_putendl_fd("Error: Too few arguments.", 2);
+	if (status == 1)
+		ft_putendl_fd("Error: Invalid input.", 2);
+	ft_putstr_fd(WHITE, 2);
+	exit(1);
+}
