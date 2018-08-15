@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:37:18 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/15 14:43:10 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/15 22:23:24 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,12 @@ t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
 	int i;
 	t_stack	*a_head;
 
-	a_head = a;
 	i = 1;
-	a->value = values[0];
-	a->next = NULL;
+	a = create(values[0], NULL);
+	a_head = a;
 	while (i < size)
 	{
-		t_stack* new = create(values[i], NULL);
-		a->next = new;
-		a = a->next;
+		a = add_end(a, values[i]);
 		i++;
 	}
 	return (a_head);
@@ -83,15 +80,33 @@ int	main(int ac, char **av)
 {
 	t_stack	*a_head;
 	t_stack	*b_head;
+	t_stack	*a;
 
-	a_head = (t_stack *)malloc(sizeof(t_stack));
 	a_head = initialise(a_head, b_head, av, ac);
-	while(a_head != NULL)
+	a = a_head;
+	while(a != NULL)
 	{
-		fprintf(stdout, "%d\n", a_head->value);
+		fprintf(stdout, "%d\n", a->value);
 		fflush(stdout);
-		a_head = a_head->next;
+		a = a->next;
 	}
-	//Do operations in order
+	fprintf(stdout, "\n");
+	fflush(stdout);
+	a = a_head;
+	a = rev_rotate(a);
+	while(a != NULL)
+	{
+		fprintf(stdout, "%d\n", a->value);
+		fflush(stdout);
+		a = a->next;
+	}
+	fprintf(stdout, "\n");
+	fflush(stdout);
+	while (b_head != NULL)
+	{
+		fprintf(stdout, "%d\n", b_head->value);
+		fflush(stdout);
+		b_head = b_head->next;
+	}
 	return (0);
 }

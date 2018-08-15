@@ -6,7 +6,7 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/15 10:52:28 by mwestvig          #+#    #+#              #
-#    Updated: 2018/08/15 12:45:39 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/08/15 17:04:27 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ FLAGS = -Wall -Werror -Wextra -I includes
 SRCS = srcs/checker.c \
 	   srcs/error.c \
 	   srcs/lst_functions.c \
+	   srcs/operations.c \
 
 OBJ = $(SRCS:.c=.o)
 

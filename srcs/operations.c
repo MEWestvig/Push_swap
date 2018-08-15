@@ -6,58 +6,54 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/14 10:03:12 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/15 22:22:07 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	swap(t_stack *stack)
+#include "../includes/checker.h"
+
+t_stack	*swap(t_stack *stack)
 {
-	t_stack	temp;
+	t_stack	*temp;
 
-	temp = stack->stack;
-	stack->stack[0] = stack->stack[1];
-	stack->stack[1] = temp;
-}
-
-void	push(int *stack1, int *stack2)
-{
-	int *temp;
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	temp = (int *)malloc(sizeof(int) * a->stack_size);
-	while (i < a->stack_size)
-	{
-		temp[i] = stack1[i];
-		i++;
-	}
-	i = 1;
-	stack1[0] = stack2[0];
-	while (i < a->stack_size)
-	{
-		stack1[i] = temp[i];
-		i++;
-	}
-	while (j < a->stack_size)
-	{
-		stack2[j] = stack2[j + 1];
-		j++;
-	}
+	temp = (t_stack *)malloc(sizeof(t_stack));
+	temp->value = stack->value;
+	stack->value = stack->next->value;
+	stack->next->value = temp->value;
 	free(temp);
+	return (stack);
 }
 
-//push
-	//push a (top of b to top of a)
-	//push b (top of a to top of b)
+t_stack	*push(t_stack **stack1, t_stack *stack2)
+{
+	if (*stack1 == NULL)
+		*stack1 = create(stack2->value, NULL);
+	else
+		*stack1 = add_begin(*stack1, stack2->value);
+	stack2 = del_begin(stack2);
+	return (stack2);
+}
 
-//rotate
-	//rot a (shift all of a up 1, first element becomes last)
-	//rot b (shift all of b up 1, first element becomes last)
-	//rot both
+t_stack	*rotate(t_stack *stack)
+{
+	int i;
 
-//reverse rotate
-	//rev rot a (shift all of a down 1, last element becomes first)
-	//rev rot b (shift all of b down 1, last element becomes first)
-	//rev rot both
+	i = stack->value;
+	stack = add_end(stack, i);
+	stack = del_begin(stack);
+	return (stack);
+}
+
+t_stack	*rev_rotate(t_stack *stack)
+{
+	int i;
+	t_stack *temp;
+
+	temp = stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	i = temp->value;
+	stack = add_begin(stack, i);
+	stack = del_end(stack);
+	return (stack);
+}
