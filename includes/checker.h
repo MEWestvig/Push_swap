@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 15:41:13 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/14 12:34:41 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/15 12:34:39 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,8 @@ typedef struct	s_stack
 	int				value;
 	struct s_stack	*next;
 }				t_stack;
+
+t_stack* create(int value, t_stack* next);
+void	error(int status);
 
 #endif
