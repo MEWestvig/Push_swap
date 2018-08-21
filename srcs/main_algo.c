@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 12:13:01 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 14:49:28 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 17:17:31 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	algo(t_stack *a_head, t_stack *b_head, int max)
 
 	a = a_head;
 	b = b_head;
-	while (!(check_a(a_head) && b == NULL))
+	while (!(check_a(a) && b == NULL))
 	{
 		if (a->value == max)
 		{
