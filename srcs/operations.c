@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/15 22:22:07 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 11:26:46 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 t_stack	*swap(t_stack *stack)
 {
-	t_stack	*temp;
+	int	temp;
 
-	temp = (t_stack *)malloc(sizeof(t_stack));
-	temp->value = stack->value;
+	temp = stack->value;
 	stack->value = stack->next->value;
-	stack->next->value = temp->value;
-	free(temp);
+	stack->next->value = temp;
 	return (stack);
 }
 
