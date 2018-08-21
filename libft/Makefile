@@ -6,7 +6,7 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/23 16:06:00 by mwestvig          #+#    #+#              #
-#    Updated: 2018/06/12 11:19:26 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/08/21 15:35:55 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRCS = ft_memset.c \
 	   ft_lstmap.c \
 	   ft_countwords.c \
 	   get_next_line.c \
+	   ft_longatoi.c \
 
 OBJ = $(SRCS:.c=.o)
 

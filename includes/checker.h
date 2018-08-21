@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 15:41:13 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/20 11:44:44 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 15:13:44 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define RED "\x1B[31m"
 # define WHITE "\x1B[0m"
 # define GREEN "\x1B[32m"
+# define MAXINT 2147483647
 
 typedef struct	s_stack
 {

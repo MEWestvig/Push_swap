@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 14:02:17 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 13:12:00 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 15:42:30 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	receive_input(t_stack **a, t_stack **b)
 		{
 			*a = rev_rotate(*a);
 			*b = rev_rotate(*b);
+		}
+		else if (!(ft_strcmp(line, "")))
+		{
+			ft_putendl_fd("Nothing inputted, please input a command.", 2);
 		}
 		else
 			error(3);

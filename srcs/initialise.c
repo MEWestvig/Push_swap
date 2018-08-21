@@ -6,11 +6,33 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 11:32:18 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/20 17:44:30 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 15:35:27 by mwestvig         ###   ########.fr       */
 
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	check_dup(int *values)
+{
+	int temp;
+	int i;
+	int	j;
+
+	i = 0;
+	while (values[i])
+	{
+		temp = values[i];
+		j = 0;
+		while (values[j])
+		{
+			if (values[j] == temp && j != i)
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 int *set_values(char **arr, int size)
 {
@@ -29,7 +51,10 @@ int *set_values(char **arr, int size)
 				error(1);
 			++j;
 		}
-		values[i] = ft_atoi(arr[i]);
+		if (ft_longatoi(arr[i]) > MAXINT)
+			error(6);
+		else
+			values[i] = ft_atoi(arr[i]);
 		i++;
 	}
 	return (values);
@@ -67,5 +92,7 @@ t_stack	*initialise(t_stack *a, t_stack *b, char **init, int stack_size)
 		i++;
 	}
 	values = set_values(arr, stack_size - 1);
+	if (!check_dup(values))
+		error(5);
 	return (set_stacks(a, b, values, stack_size - 1));
 }
