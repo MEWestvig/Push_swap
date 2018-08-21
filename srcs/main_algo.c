@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 12:13:01 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 13:29:11 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 14:49:28 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int		check_a(t_stack *a)
 {
+	t_stack	*a_head;
+
+	a_head = a;
 	while (a->next)
 	{
 		if (a->value > a->next->value)
 			return (0);
 		a = a->next;
 	}
+	a = a_head;
 	return (1);
 }
 
@@ -42,7 +46,7 @@ void	algo(t_stack *a_head, t_stack *b_head, int max)
 			a = swap(a);
 			ft_putendl("sa");
 		}
-		else
+		else if (!check_a(a))
 		{
 			a = push(&b, a);
 			ft_putendl("pb");
