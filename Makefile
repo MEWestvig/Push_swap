@@ -6,7 +6,7 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/15 10:52:28 by mwestvig          #+#    #+#              #
-#    Updated: 2018/08/20 11:45:13 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/08/21 13:07:57 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS2 = srcs/push_swap.c \
 		srcs/receive_input.c \
 		srcs/check_stacks.c \
 		srcs/initialise.c \
+		srcs/main_algo.c \
 
 OBJ = $(SRCS:.c=.o)
 OBJ2 = $(SRCS2:.c=.o)
@@ -40,7 +41,7 @@ $(NAME) : $(OBJ)
 	@make -C libft
 	@gcc $(FLAGS) -o $(NAME) $(OBJ) libft/libft.a
 
-$(NAME2) : $(OBJ)
+$(NAME2) : $(OBJ2)
 	@make -C libft
 	@gcc $(FLAGS) -o $(NAME2) $(OBJ2) libft/libft.a
 

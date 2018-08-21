@@ -6,11 +6,11 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/15 12:14:05 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/15 22:08:08 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 12:04:36 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 t_stack	*create(int value, t_stack* next)
 {

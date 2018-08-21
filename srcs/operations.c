@@ -6,11 +6,11 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 11:26:46 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 13:34:14 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 t_stack	*swap(t_stack *stack)
 {
@@ -24,6 +24,8 @@ t_stack	*swap(t_stack *stack)
 
 t_stack	*push(t_stack **stack1, t_stack *stack2)
 {
+	if (stack2 == NULL)
+		error(4);
 	if (*stack1 == NULL)
 		*stack1 = create(stack2->value, NULL);
 	else
