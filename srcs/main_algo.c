@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 12:13:01 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 17:17:31 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 18:31:01 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		check_a(t_stack *a)
 	return (1);
 }
 
-void	algo(t_stack *a_head, t_stack *b_head, int max)
+void	algo(t_stack *a_head, t_stack *b_head, int max, int min)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -38,13 +38,42 @@ void	algo(t_stack *a_head, t_stack *b_head, int max)
 	{
 		if (a->value == max)
 		{
-			a = rotate(a);
-			ft_putendl("ra");
+			if (b != NULL && b->next != NULL)
+			{
+				if (b->value == min)
+				{
+					a = rotate(a);
+					b = rotate(b);
+					ft_putendl("rr");
+				}
+			}
+			else
+			{
+				a = rotate(a);
+				ft_putendl("ra");
+			}
 		}
 		if (a->value > a->next->value)
 		{
-			a = swap(a);
-			ft_putendl("sa");
+			if (b != NULL && b->next != NULL)
+			{
+				if (b->next->value > b->value)
+				{
+					a = swap(a);
+					b = swap(b);
+					ft_putendl("ss");
+				}
+				else
+				{
+					a = swap(a);
+					ft_putendl("sa");
+				}
+			}
+			else
+			{
+				a = swap(a);
+				ft_putendl("sa");
+			}
 		}
 		else if (!check_a(a))
 		{
@@ -54,11 +83,18 @@ void	algo(t_stack *a_head, t_stack *b_head, int max)
 		if (check_a(a))
 		{
 			if (b != NULL && b->next != NULL)
+			{
+				if (b->value == min)
+				{
+					b = rotate(b);
+					ft_putendl("rb");
+				}
 				if (b->next->value > b->value)
 				{
 					b = swap(b);
 					ft_putendl("sb");
 				}
+			}
 			if (b != NULL)
 			{
 				b = push(&a, b);
