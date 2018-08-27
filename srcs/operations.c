@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 13:34:14 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/27 11:00:54 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_stack	*rotate(t_stack *stack)
 
 t_stack	*rev_rotate(t_stack *stack)
 {
-	int i;
-	t_stack *temp;
+	int		i;
+	t_stack	*temp;
 
 	temp = stack;
 	while (temp->next != NULL)

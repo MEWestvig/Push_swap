@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialise.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
+/*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 11:32:18 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 15:35:27 by mwestvig         ###   ########.fr       */
-
+/*   Created: 2018/08/27 10:58:28 by mwestvig          #+#    #+#             */
+/*   Updated: 2018/08/27 11:00:03 by mwestvig         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_dup(int *values)
+int		check_dup(int *values)
 {
 	int temp;
 	int i;
@@ -34,7 +34,7 @@ int	check_dup(int *values)
 	return (1);
 }
 
-int *set_values(char **arr, int size)
+int		*set_values(char **arr, int size)
 {
 	int i;
 	int j;
@@ -62,7 +62,7 @@ int *set_values(char **arr, int size)
 
 t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
 {
-	int i;
+	int		i;
 	t_stack	*a_head;
 
 	i = 1;
@@ -76,23 +76,23 @@ t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
 	return (a_head);
 }
 
-t_stack	*initialise(t_stack *a, t_stack *b, char **init, int stack_size)
+t_stack	*initialise(t_stack *a, t_stack *b, char **init, int size)
 {
 	int		i;
 	int		*values;
 	char	**arr;
 
 	i = 1;
-	arr = (char **)malloc(sizeof(char *) * stack_size);
-	if (stack_size < 2)
+	arr = (char **)malloc(sizeof(char *) * size);
+	if (size < 2)
 		error(0);
-	while (i < stack_size)
+	while (i < size)
 	{
 		arr[i - 1] = ft_strdup(init[i]);
 		i++;
 	}
-	values = set_values(arr, stack_size - 1);
+	values = set_values(arr, size - 1);
 	if (!check_dup(values))
 		error(5);
-	return (set_stacks(a, b, values, stack_size - 1));
+	return (set_stacks(a, b, values, size - 1));
 }
