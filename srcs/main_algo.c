@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 12:13:01 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 18:31:01 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/23 15:44:09 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		check_a(t_stack *a)
 	t_stack	*a_head;
 
 	a_head = a;
+	if (a && a->next == NULL)
+		return (2);
 	while (a->next)
 	{
 		if (a->value > a->next->value)
