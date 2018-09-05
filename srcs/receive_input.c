@@ -6,11 +6,35 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 14:02:17 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 15:42:30 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 14:03:42 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
+
+void	receive_input2(t_stack **a, t_stack **b, char *line)
+{
+	if (!(ft_strcmp(line, "rr")))
+	{
+		*a = rotate(*a);
+		*b = rotate(*b);
+	}
+	else if (!(ft_strcmp(line, "rra")))
+		*a = rev_rotate(*a);
+	else if (!(ft_strcmp(line, "rrb")))
+		*b = rev_rotate(*b);
+	else if (!(ft_strcmp(line, "rrr")))
+	{
+		*a = rev_rotate(*a);
+		*b = rev_rotate(*b);
+	}
+	else if (!(ft_strcmp(line, "")))
+	{
+		ft_putendl_fd("Nothing inputted, please input a command.", 2);
+	}
+	else
+		error(3);
+}
 
 void	receive_input(t_stack **a, t_stack **b)
 {
@@ -35,25 +59,7 @@ void	receive_input(t_stack **a, t_stack **b)
 			*a = rotate(*a);
 		else if (!(ft_strcmp(line, "rb")))
 			*b = rotate(*b);
-		else if (!(ft_strcmp(line, "rr")))
-		{
-			*a = rotate(*a);
-			*b = rotate(*b);
-		}
-		else if (!(ft_strcmp(line, "rra")))
-			*a = rev_rotate(*a);
-		else if (!(ft_strcmp(line, "rrb")))
-			*b = rev_rotate(*b);
-		else if (!(ft_strcmp(line, "rrr")))
-		{
-			*a = rev_rotate(*a);
-			*b = rev_rotate(*b);
-		}
-		else if (!(ft_strcmp(line, "")))
-		{
-			ft_putendl_fd("Nothing inputted, please input a command.", 2);
-		}
 		else
-			error(3);
+			receive_input2(a, b, line);
 	}
 }

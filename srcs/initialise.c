@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:58:28 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/29 12:17:57 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 14:04:04 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
 	t_stack	*a_head;
 
 	i = 1;
-	a = create(values[0], NULL, 0);
+	a = create(values[0], NULL);
 	a_head = a;
 	while (i < size)
 	{

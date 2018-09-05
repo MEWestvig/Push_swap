@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/29 12:39:51 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 12:16:34 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 14:01:00 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,91 +62,47 @@ void	sort3(t_stack **a_head, t_stack **b_head, int size, int stack)
 	if (!is_sorted((stack) ? *(a_head) : *(b_head), size, stack))
 	{
 		if (!is_sorted((stack) ? *(a_head) : *(b_head), 2, stack))
-		{
-			if (stack)
-			{
-				*a_head = swap(*a_head);
-				ft_putendl("sa");
-			}
-			else
-			{
-				*b_head = swap(*b_head);
-				ft_putendl("sb");
-			}
-		}
+			do_oper(a_head, b_head, (stack) ? "sa" : "sb");
 		else
 		{
 			if (stack)
 			{
-				*a_head = rotate(*a_head);
-				ft_putendl("ra");
-				*a_head = swap(*a_head);
-				ft_putendl("sa");
-				*a_head = rev_rotate(*a_head);
-				ft_putendl("rra");
+				do_oper(a_head, b_head, "ra");
+				do_oper(a_head, b_head, "sa");
+				do_oper(a_head, b_head, "rra");
 			}
 			else
 			{
-				*b_head = rotate(*b_head);
-				ft_putendl("rb");
-				*b_head = swap(*b_head);
-				ft_putendl("sb");
-				*b_head = rev_rotate(*b_head);
-				ft_putendl("rrb");
+				do_oper(a_head, b_head, "rb");
+				do_oper(a_head, b_head, "sb");
+				do_oper(a_head, b_head, "rrb");
 			}
 		}
 		sort3(a_head, b_head, size, stack);
 	}
 }
 
-int		pusher(t_stack **a_head, t_stack **b_head, int stack, int pivot)
+int		pusher(t_stack **a, t_stack **b, int stack, int pivot)
 {
-	if ((stack && (*a_head)->value < pivot) || (!stack && (*b_head)->value >= pivot))
+	if ((stack && (*a)->value < pivot) || (!stack && (*b)->value >= pivot))
 	{
 		if (!stack)
-		{
-			*b_head = push(a_head, *b_head);
-			ft_putendl("pa");
-		}
+			do_oper(a, b, "pa");
 		else
-		{
-			*a_head = push(b_head, *a_head);
-			ft_putendl("pb");
-		}
+			do_oper(a, b, "pb");
 		return (1);
 	}
 	else
 	{
 		if (!stack)
-		{
-			*b_head = rotate(*b_head);
-			ft_putendl("rb");
-		}
+			do_oper(a, b, "rb");
 		else
-		{
-			*a_head = rotate(*a_head);
-			ft_putendl("ra");
-		}
+			do_oper(a, b, "ra");
 	}
 	return (0);
 }
 
-int		stacksize(t_stack *stack)
-{
-	t_stack	*temp;
-	int		size;
-
-	size = 0;
-	temp = stack;
-	while (temp && temp->sorted != 1)
-	{
-		size++;
-		temp = temp->next;
-	}
-	return (size);
-}
-
-void	quicksort(t_stack **a_head, t_stack **b_head, int size, int stack, int n)
+void	quicksort(t_stack **a, t_stack **b, int size, int stack, int n)
 {
 	int	pivot;
 	int	i;
@@ -154,43 +110,21 @@ void	quicksort(t_stack **a_head, t_stack **b_head, int size, int stack, int n)
 
 	reset = 0;
 	i = 0;
-	pivot = median((stack) ? *(a_head) : *(b_head), size);
-	if (is_sorted((stack) ? *(a_head) : *(b_head), size, stack))
+	pivot = median((stack) ? *(a) : *(b), size);
+	if (is_sorted((stack) ? *(a) : *(b), size, stack))
 		return ;
 	while (size > 3 && i < (size / 2) + (size % 2 && !stack) && ++reset)
-		i += pusher(a_head, b_head, stack, pivot);
+		i += pusher(a, b, stack, pivot);
 	while ((!n) && (reset--) - i)
-	{
-		if (!stack)
-		{
-			(*b_head) = rev_rotate((*b_head));
-			ft_putendl("rrb");
-		}
-		else
-		{
-			(*a_head) = rev_rotate((*a_head));
-			ft_putendl("rra");
-		}
-	}
+		do_oper(a, b, (stack) ? "rra" : "rrb");
 	if (i && !stack)
-		quicksort(&(*a_head), &(*b_head), i, !stack, 0);
+		quicksort(&(*a), &(*b), i, !stack, 0);
 	if (size - i <= 3)
-		sort3(&(*a_head), &(*b_head), size - i, stack);
+		sort3(&(*a), &(*b), size - i, stack);
 	else
-		quicksort(&(*a_head), &(*b_head), size - i, stack, (n == 2) ? 1 : n);
+		quicksort(&(*a), &(*b), size - i, stack, (n == 2) ? 1 : n);
 	if (i && stack)
-		quicksort(&(*a_head), &(*b_head), i, !stack, (n == 2) ? 1 : 0);
+		quicksort(&(*a), &(*b), i, !stack, (n == 2) ? 1 : 0);
 	while (i--)
-	{
-		if (stack)
-		{
-			(*b_head) = push(a_head, (*b_head));
-			ft_putendl("pa");
-		}
-		else
-		{
-			*a_head = push(b_head, (*a_head));
-			ft_putendl("pb");
-		}
-	}
+		do_oper(a, b, (stack) ? "pa" : "pb");
 }
