@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 11:21:52 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 18:10:00 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 12:04:52 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	main(int ac, char **av)
 			minnum = temp->value;
 		temp = temp->next;
 	}
-	algo(a, b, maxnum, minnum);
+	quicksort(&a, &b, stacksize(a), 1, 2);
 	return (0);
 }

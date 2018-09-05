@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 12:13:01 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/23 15:44:09 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/31 12:28:02 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		check_a(t_stack *a)
 	return (1);
 }
 
-void	algo(t_stack *a_head, t_stack *b_head, int max, int min)
+/*void	algo(t_stack *a_head, t_stack *b_head, int max, int min)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -104,4 +104,4 @@ void	algo(t_stack *a_head, t_stack *b_head, int max, int min)
 			}
 		}
 	}
-}
+}*/
