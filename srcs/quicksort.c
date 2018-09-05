@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/29 12:39:51 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 14:01:00 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 15:43:35 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		pusher(t_stack **a, t_stack **b, int stack, int pivot)
 	return (0);
 }
 
-void	quicksort(t_stack **a, t_stack **b, int size, int stack, int n)
+void	quicksort(t_stack ***head, int size, int stack, int n)
 {
 	int	pivot;
 	int	i;
@@ -110,21 +110,21 @@ void	quicksort(t_stack **a, t_stack **b, int size, int stack, int n)
 
 	reset = 0;
 	i = 0;
-	pivot = median((stack) ? *(a) : *(b), size);
-	if (is_sorted((stack) ? *(a) : *(b), size, stack))
+	pivot = median((stack) ? *(head[0]) : *(head[1]), size);
+	if (is_sorted((stack) ? *(head[0]) : *(head[1]), size, stack))
 		return ;
 	while (size > 3 && i < (size / 2) + (size % 2 && !stack) && ++reset)
-		i += pusher(a, b, stack, pivot);
+		i += pusher(head[0], head[1], stack, pivot);
 	while ((!n) && (reset--) - i)
-		do_oper(a, b, (stack) ? "rra" : "rrb");
+		do_oper(head[0], head[1], (stack) ? "rra" : "rrb");
 	if (i && !stack)
-		quicksort(&(*a), &(*b), i, !stack, 0);
+		quicksort(&(*head), i, !stack, 0);
 	if (size - i <= 3)
-		sort3(&(*a), &(*b), size - i, stack);
+		sort3(&(*head[0]), &(*head[1]), size - i, stack);
 	else
-		quicksort(&(*a), &(*b), size - i, stack, (n == 2) ? 1 : n);
+		quicksort(&(*head), size - i, stack, (n == 2) ? 1 : n);
 	if (i && stack)
-		quicksort(&(*a), &(*b), i, !stack, (n == 2) ? 1 : 0);
+		quicksort(&(*head), i, !stack, (n == 2) ? 1 : 0);
 	while (i--)
-		do_oper(a, b, (stack) ? "pa" : "pb");
+		do_oper(head[0], head[1], (stack) ? "pa" : "pb");
 }

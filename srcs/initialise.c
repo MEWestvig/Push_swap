@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:58:28 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 14:04:04 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 16:09:52 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ int		*set_values(char **arr, int size)
 			error(6);
 		else
 			values[i] = ft_atoi(arr[i]);
+		ft_strdel(&arr[i]);
 		i++;
 	}
+	free(arr);
 	return (values);
 }
 
@@ -73,6 +75,7 @@ t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
 		a = add_end(a, values[i]);
 		i++;
 	}
+	free(values);
 	return (a_head);
 }
 
@@ -83,9 +86,9 @@ t_stack	*initialise(t_stack *a, t_stack *b, char **init, int size)
 	char	**arr;
 
 	i = 1;
-	arr = (char **)malloc(sizeof(char *) * size);
 	if (size < 2)
 		error(0);
+	arr = (char **)malloc(sizeof(char *) * size);
 	while (i < size)
 	{
 		arr[i - 1] = ft_strdup(init[i]);

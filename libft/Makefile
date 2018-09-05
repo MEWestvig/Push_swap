@@ -6,13 +6,13 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/23 16:06:00 by mwestvig          #+#    #+#              #
-#    Updated: 2018/08/21 15:35:55 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/09/05 15:47:00 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CFLAGS = -Wall -Werror -Wextra -I includes
+CFLAGS = -Wall -Werror -Wextra -g -I includes
 
 SRCS = ft_memset.c \
 	   ft_bzero.c \

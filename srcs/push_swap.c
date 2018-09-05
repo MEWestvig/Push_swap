@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 11:21:52 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 14:02:54 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/05 16:07:13 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,20 @@ int		main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	*temp;
-	int		maxnum;
-	int		minnum;
+	t_stack	***head;
+	t_stack	*lst;
 
-	maxnum = 0;
-	minnum = MAXINT;
+	head = (t_stack ***)malloc(sizeof(t_stack **) * 2);
 	a = initialise(a, b, av, ac);
-	temp = a;
-	while (temp)
+	head[0] = &a;
+	head[1] = &b;
+	quicksort(head, stacksize(a), 1, 2);
+	while (a)
 	{
-		if (temp->value > maxnum)
-			maxnum = temp->value;
-		if (temp->value < minnum)
-			minnum = temp->value;
-		temp = temp->next;
+		lst = a;
+		a = lst->next;
+		free(lst);
 	}
-	quicksort(&a, &b, stacksize(a), 1, 2);
+	free(head);
 	return (0);
 }

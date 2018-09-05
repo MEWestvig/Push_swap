@@ -6,14 +6,14 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/15 10:52:28 by mwestvig          #+#    #+#              #
-#    Updated: 2018/09/05 12:05:29 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/09/05 15:45:55 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = checker
 NAME2 = push_swap
 
-FLAGS = -Wall -Werror -Wextra -I includes
+FLAGS = -Wall -Werror -Wextra -g -I includes
 
 SRCS = srcs/checker.c \
 	   srcs/error.c \
