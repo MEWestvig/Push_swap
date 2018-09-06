@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 15:41:13 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 12:42:56 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/06 11:10:06 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_stack			*rotate(t_stack *stack);
 t_stack			*rev_rotate(t_stack *stack);
 void			receive_input(t_stack **a, t_stack **b);
 void			check_stacks(t_stack *a, t_stack *b);
-t_stack			*set_stacks(t_stack *a, t_stack *b, int *values, int size);
-t_stack			*initialise(t_stack *a, t_stack *b, char **init, int size);
+t_stack			*set_stacks(t_stack *a, int *values, int size);
+t_stack			*initialise(t_stack *a, char **init, int size);
 
 #endif

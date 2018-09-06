@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:58:28 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 16:09:52 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/06 11:09:08 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		*set_values(char **arr, int size)
 	int	*values;
 
 	i = 0;
-	values = (int *)malloc(sizeof(int) * size);
+	values = (int *)malloc(sizeof(int) * size + 1);
 	while (i < size)
 	{
 		j = 0;
@@ -62,7 +62,7 @@ int		*set_values(char **arr, int size)
 	return (values);
 }
 
-t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
+t_stack	*set_stacks(t_stack *a, int *values, int size)
 {
 	int		i;
 	t_stack	*a_head;
@@ -79,7 +79,7 @@ t_stack	*set_stacks(t_stack *a, t_stack *b, int *values, int size)
 	return (a_head);
 }
 
-t_stack	*initialise(t_stack *a, t_stack *b, char **init, int size)
+t_stack	*initialise(t_stack *a, char **init, int size)
 {
 	int		i;
 	int		*values;
@@ -88,7 +88,7 @@ t_stack	*initialise(t_stack *a, t_stack *b, char **init, int size)
 	i = 1;
 	if (size < 2)
 		error(0);
-	arr = (char **)malloc(sizeof(char *) * size);
+	arr = (char **)malloc(sizeof(char *) * size + 1);
 	while (i < size)
 	{
 		arr[i - 1] = ft_strdup(init[i]);
@@ -97,5 +97,5 @@ t_stack	*initialise(t_stack *a, t_stack *b, char **init, int size)
 	values = set_values(arr, size - 1);
 	if (!check_dup(values))
 		error(5);
-	return (set_stacks(a, b, values, size - 1));
+	return (set_stacks(a, values, size - 1));
 }

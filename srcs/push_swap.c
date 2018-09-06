@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 11:21:52 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 16:07:13 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/06 12:12:46 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(int ac, char **av)
 	t_stack	*lst;
 
 	head = (t_stack ***)malloc(sizeof(t_stack **) * 2);
-	a = initialise(a, b, av, ac);
+	a = initialise(a, av, ac);
 	head[0] = &a;
 	head[1] = &b;
 	quicksort(head, stacksize(a), 1, 2);

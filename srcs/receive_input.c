@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/16 14:02:17 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 14:03:42 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/06 12:00:18 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	receive_input(t_stack **a, t_stack **b)
 			*b = rotate(*b);
 		else
 			receive_input2(a, b, line);
+		free(line);
 	}
 }
