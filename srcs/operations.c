@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/05 12:41:21 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/10 14:06:33 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_stack	*swap(t_stack *stack)
 {
 	int	temp;
 
+	if (stack == NULL)
+		error(7);
 	temp = stack->value;
 	stack->value = stack->next->value;
 	stack->next->value = temp;

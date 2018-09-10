@@ -6,7 +6,7 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/15 10:52:28 by mwestvig          #+#    #+#              #
-#    Updated: 2018/09/05 15:45:55 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/09/10 14:07:06 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS2 = srcs/push_swap.c \
 		srcs/check_stacks.c \
 		srcs/initialise.c \
 		srcs/quicksort.c \
+		srcs/other_algos.c \
 
 OBJ = $(SRCS:.c=.o)
 OBJ2 = $(SRCS2:.c=.o)

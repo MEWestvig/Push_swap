@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/14 12:23:59 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 15:35:14 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/10 13:25:08 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	error(int status)
 		ft_putendl_fd("Error: Duplicate values!", 2);
 	if (status == 6)
 		ft_putendl_fd("Error: Input greater than maximum int.", 2);
+	if (status == 7)
+		ft_putendl_fd("Error: Too few values to be able to swap!", 2);
 	ft_putstr_fd(WHITE, 2);
 	exit(1);
 }

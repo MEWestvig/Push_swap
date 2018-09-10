@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 11:21:52 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/06 12:12:46 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/10 15:53:47 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@ int		stacksize(t_stack *stack)
 	return (size);
 }
 
+int		is_rev(t_stack *a_head)
+{
+	t_stack	*tmp;
+	
+	tmp = a_head;
+	while(tmp->next)
+	{
+		if (tmp->value < tmp->next->value)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	t_stack	*a;
@@ -55,17 +69,15 @@ int		main(int ac, char **av)
 	t_stack	***head;
 	t_stack	*lst;
 
-	head = (t_stack ***)malloc(sizeof(t_stack **) * 2);
 	a = initialise(a, av, ac);
+	head = (t_stack ***)malloc(sizeof(t_stack **) * 2);
 	head[0] = &a;
 	head[1] = &b;
-	quicksort(head, stacksize(a), 1, 2);
-	while (a)
-	{
-		lst = a;
-		a = lst->next;
-		free(lst);
-	}
-	free(head);
+	if (stacksize(a) < 5)
+		mini_sort(a, b);
+	else if (is_rev(a))
+		rev_sort(a, b);
+	else
+		quicksort(head, stacksize(a), 1, 2);
 	return (0);
 }

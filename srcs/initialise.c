@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/27 10:58:28 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/09/06 11:09:08 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/10 15:52:42 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,22 @@ int		*set_values(char **arr, int size)
 	return (values);
 }
 
+char	*set_str(char **init, int size)
+{
+	int		i;
+	char const	*temp;
+	char const	*str;
+
+	i = 1;
+	str = ft_strdup((const char *)init[i]);
+	while (i < size - 1)
+	{
+		temp = ft_strjoin(str, " ");
+		str = ft_strjoin(temp, init[i + 1]);
+		i++;
+	}
+	return ((char *)str);
+}
 t_stack	*set_stacks(t_stack *a, int *values, int size)
 {
 	int		i;
@@ -81,21 +97,21 @@ t_stack	*set_stacks(t_stack *a, int *values, int size)
 
 t_stack	*initialise(t_stack *a, char **init, int size)
 {
-	int		i;
 	int		*values;
 	char	**arr;
+	char	*str;
+	int		lst_size;
 
-	i = 1;
+	lst_size = 0;
 	if (size < 2)
 		error(0);
-	arr = (char **)malloc(sizeof(char *) * size + 1);
-	while (i < size)
-	{
-		arr[i - 1] = ft_strdup(init[i]);
-		i++;
-	}
-	values = set_values(arr, size - 1);
+	str = set_str(init, size);
+	arr = ft_strsplit(str, ' ');
+	ft_strdel(&str);
+	while (arr[lst_size])
+		lst_size++;
+	values = set_values(arr, lst_size);
 	if (!check_dup(values))
 		error(5);
-	return (set_stacks(a, values, size - 1));
+	return (set_stacks(a, values, lst_size));
 }
